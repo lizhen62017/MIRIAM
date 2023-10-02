@@ -1,0 +1,3 @@
+trajin 7_chg_fwd.netcdf
+distance @9 :3@CU out distance3.txt
+distance @9 :3@CU out distance4.txt

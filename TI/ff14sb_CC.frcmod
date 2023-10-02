@@ -1,0 +1,18 @@
+for CC-H4
+MASS
+CC 12.01         0.360               sp2 aromatic C, 5 memb. ring HIS
+
+BOND
+CC-H4  367.0    1.080       copied from CV-H4
+
+ANGLE
+H4-CC-NA    50.0      120.00    copied from H4-CV-NB
+CV-CC-H4    50.0      120.00    copied from CC-CV-H4
+
+DIHE
+
+IMPROPER
+X -X -CC-H4         1.1          180.          2.        copied from X-X-CV-H4
+
+NONBON
+

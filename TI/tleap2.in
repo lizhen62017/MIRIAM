@@ -1,0 +1,13 @@
+source leaprc.protein.ff14SB
+loadoff solvents.lib
+loadoff atomic_ions.lib
+loadamberparams ff14sb_CC.frcmod
+loadamberparams frcmod.opc
+loadamberparams frcmod.NI
+loadamberparams frcmod.CO
+imd = loadmol2 cooresp.mol2
+a = loadpdb input.pdb
+solvateoct a OPCBOX 24.0
+saveamberparm a 126.prmtop 126.inpcrd
+quit
+

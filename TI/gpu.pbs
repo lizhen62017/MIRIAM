@@ -1,0 +1,37 @@
+#!/bin/bash
+#SBATCH -A merzjrke
+#SBATCH -J 6wz3
+#SBATCH -e test.err
+#SBATCH -o test.out
+#SBATCH --nodes=1             ### Node count required for the job
+#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
+#SBATCH --gres=gpu:1          ### General REServation of gpu:number of gpus
+#SBATCH --mem=4G
+#SBATCH --time=167:55:00
+ 
+echo $SLURM_SUBMIT_DIR
+cd $SLURM_SUBMIT_DIR
+
+#-------------- Load Modules ------------------
+module purge && ml GCC/9.3.0 CUDA/11.0.207 OpenMPI/4.0.3 && ulimit -c 0
+
+exe=$AMBERHOME/bin/pmemd.cuda
+
+#-------------- Run job -----------------------
+echo 'RUN AMBER JOB'
+# running command
+$exe -O -i ti2_min1.in -o ti2_min1.out -p 1264.prmtop -c 1264.inpcrd -r ti2_min1.rst -x ti2_min1.netcdf -inf ti2_min1.mdinfo -ref 1264.inpcrd
+$exe -O -i ti2_nvt.in -o ti2_nvt.out -p 1264.prmtop -c ti2_min1.rst -r ti2_nvt.rst -x ti2_nvt.netcdf
+$exe -O -i ti2_npt.in -o ti2_npt.out -p 1264.prmtop -c ti2_nvt.rst -r ti2_npt.rst -x ti2_npt.netcdf
+$exe -O -i 1_chg_fwd.in -o 1_chg_fwd.out -p 1264.prmtop -c ti2_npt.rst -r 1_chg_fwd.rst -x 1_chg_fwd.netcdf
+$exe -O -i 2_chg_fwd.in -o 2_chg_fwd.out -p 1264.prmtop -c 1_chg_fwd.rst -r 2_chg_fwd.rst -x 2_chg_fwd.netcdf
+$exe -O -i 3_chg_fwd.in -o 3_chg_fwd.out -p 1264.prmtop -c 2_chg_fwd.rst -r 3_chg_fwd.rst -x 3_chg_fwd.netcdf
+$exe -O -i 4_chg_fwd.in -o 4_chg_fwd.out -p 1264.prmtop -c 3_chg_fwd.rst -r 4_chg_fwd.rst -x 4_chg_fwd.netcdf
+$exe -O -i 5_chg_fwd.in -o 5_chg_fwd.out -p 1264.prmtop -c 4_chg_fwd.rst -r 5_chg_fwd.rst -x 5_chg_fwd.netcdf
+$exe -O -i 6_chg_fwd.in -o 6_chg_fwd.out -p 1264.prmtop -c 5_chg_fwd.rst -r 6_chg_fwd.rst -x 6_chg_fwd.netcdf
+$exe -O -i 7_chg_fwd.in -o 7_chg_fwd.out -p 1264.prmtop -c 6_chg_fwd.rst -r 7_chg_fwd.rst -x 7_chg_fwd.netcdf
+$exe -O -i 8_chg_fwd.in -o 8_chg_fwd.out -p 1264.prmtop -c 7_chg_fwd.rst -r 8_chg_fwd.rst -x 8_chg_fwd.netcdf
+$exe -O -i 9_chg_fwd.in -o 9_chg_fwd.out -p 1264.prmtop -c 8_chg_fwd.rst -r 9_chg_fwd.rst -x 9_chg_fwd.netcdf
+$exe -O -i 10_chg_fwd.in -o 10_chg_fwd.out -p 1264.prmtop -c 9_chg_fwd.rst -r 10_chg_fwd.rst -x 10_chg_fwd.netcdf
+$exe -O -i 11_chg_fwd.in -o 11_chg_fwd.out -p 1264.prmtop -c 10_chg_fwd.rst -r 11_chg_fwd.rst -x 11_chg_fwd.netcdf
+$exe -O -i 12_chg_fwd.in -o 12_chg_fwd.out -p 1264.prmtop -c 11_chg_fwd.rst -r 12_chg_fwd.rst -x 12_chg_fwd.netcdf
