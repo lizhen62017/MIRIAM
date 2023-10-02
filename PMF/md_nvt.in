@@ -1,0 +1,28 @@
+nvt for free MD
+ &cntrl
+  imin=0,
+  irest=0,
+  ntx=1,
+  ig=-1,
+  nstlim=100000,
+  dt=0.002,
+  cut=10.0,
+  ntc=2,
+  ntf=2,
+  ntb=1,
+  ntt=3,
+  gamma_ln=2.0,
+  tempi=2.0,
+  temp0=300.0,
+  ntpr=5000,
+  ntwr=5000,
+  ntwx=10000,
+  ioutfm=1,
+  iwrap=0,
+ 
+  nmropt=1,
+ /
+ &wt TYPE='TEMP0', istep1=0, istep2=90000, value1=2.0, value2=300.0 /
+ &wt TYPE='TEMP0', istep1=90001, istep2=100000, value1=300.0, value2=300.0 /
+ &wt TYPE='DUMPFREQ', istep1=10000, /
+ &wt TYPE='END', /

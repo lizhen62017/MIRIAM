@@ -1,0 +1,2 @@
+trajin smd_forward_md_center.netcdf
+distance @10 @9 out smd_forward_md.txt

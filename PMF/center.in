@@ -1,0 +1,3 @@
+trajin md_md.netcdf
+autoimage
+trajout md_md_center.netcdf netcdf

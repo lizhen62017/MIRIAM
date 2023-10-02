@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH -A hmakmm
+#SBATCH -J pmf
+#SBATCH -e test.err
+#SBATCH -o test.out
+#SBATCH --nodes=1             ### Node count required for the job
+#SBATCH --ntasks-per-node=4   ### Nuber of tasks to be launched per Node     
+#SBATCH --gres=gpu:a100:1          ### General REServation of gpu:number of gpus
+#SBATCH --mem=32G
+#SBATCH --time=165:00:00
+  
+echo $SLURM_SUBMIT_DIR
+cd $SLURM_SUBMIT_DIR
+export PLUMED_KERNEL="/mnt/home/lizhen6/plumed2-2.8.2/bin/lib/libplumedKernel.so"
+
+#-------------- Load Modules ------------------
+ulimit -c 0
+ml -* GCC/9.3.0 CUDA/11.0.207 OpenMPI/4.0.3 CMake powertools Conda
+source /mnt/research/MerzGroup/Amber20Tools21/amber20/amber.sh
+
+Auto-PMF-NVT-di_equi-cpu.py -i pmf.in -s prepare
+#Auto-PMF-NVT-di_equi-cpu.py -i pmf.in -s sampling_NVT
+
+echo "job finished"

@@ -1,0 +1,9 @@
+pmemd.cuda -O -i md_min1.in -o md_min1.out -p 1264.prmtop -c 1264.inpcrd -r md_min1.rst -x md_min1.netcdf -ref 1264.inpcrd
+pmemd.cuda -O -i md_min2.in -o md_min2.out -p 1264.prmtop -c md_min1.rst -r md_min2.rst -x md_min2.netcdf -ref md_min1.rst
+pmemd.cuda -O -i md_min3.in -o md_min3.out -p 1264.prmtop -c md_min2.rst -r md_min3.rst -x md_min3.netcdf -ref md_min2.rst
+pmemd.cuda -O -i md_min4.in -o md_min4.out -p 1264.prmtop -c md_min3.rst -r md_min4.rst -x md_min4.netcdf -ref md_min3.rst
+pmemd.cuda -O -i md_min5.in -o md_min5.out -p 1264.prmtop -c md_min4.rst -r md_min5.rst -x md_min5.netcdf -ref md_min4.rst
+pmemd.cuda -O -i md_nvt.in -o md_nvt.out -p 1264.prmtop -c md_min5.rst -r md_nvt.rst -x md_nvt.netcdf -ref md_min5.rst
+srun -n 4 pmemd.MPI -O -i md_snpt.in -o md_snpt.out -p 1264.prmtop -c md_nvt.rst -r md_snpt.rst -x md_snpt.netcdf -ref md_nvt.rst
+pmemd.cuda -O -i md_npt.in -o md_npt.out -p 1264.prmtop -c md_snpt.rst -r md_npt.rst -x md_npt.netcdf -ref md_snpt.rst
+pmemd.cuda -O -i md_md.in -o md_md.out -p 1264.prmtop -c md_npt.rst -r md_md.rst -x md_md.netcdf -ref md_npt.rst

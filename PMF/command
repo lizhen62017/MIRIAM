@@ -1,0 +1,7 @@
+pmemd.cuda -O -i us_npt.in -o us_npt.out -p 1264.prmtop -c start.rst -r us_npt.rst -x us_npt.netcdf -ref start.rst
+pmemd.cuda -O -i us_md.in -o us_md.out -p 1264.prmtop -c us_npt.rst -r us_md.rst -x us_md.netcdf -ref us_npt.rst
+if grep 'Total wall time' us_md.out;then
+   echo 'all done'
+else
+   sbatch 2.15.slm
+fi

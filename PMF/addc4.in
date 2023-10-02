@@ -1,0 +1,10 @@
+parm 126.prmtop
+loadRestrt 126.inpcrd
+setOverwrite True
+
+change AMBER_ATOM_TYPE @9 MUTE
+addLJType @%MUTE
+
+add12_6_4 :2 watermodel opc polfile 2.75.txt 
+outparm 1264.prmtop 1264.inpcrd
+printLJMatrix :2

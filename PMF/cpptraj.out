@@ -1,0 +1,62 @@
+
+CPPTRAJ: Trajectory Analysis. V5.1.0
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 03/24/23 14:01:43
+| Available memory: 498.867 GB
+
+	Reading '1264.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+INPUT: Reading input from 'smd_reverse_md_cpptraj.in'
+  [trajin smd_reverse_md_center.netcdf]
+	Reading 'smd_reverse_md_center.netcdf' as Amber NetCDF
+  [distance @10 @9 out smd_reverse_md.txt]
+    DISTANCE: @10 to @9, center of mass.
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: 1264.prmtop, 49902 atoms, 12475 res, box: Truncated octahedron, 12475 mol, 12473 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'smd_reverse_md_center.netcdf' is a NetCDF AMBER trajectory with coordinates, time, box, Parm 1264.prmtop (Truncated octahedron box) (reading 1450 of 1450)
+  Coordinate processing will occur on 1450 frames.
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM '1264.prmtop' (1 actions):
+  0: [distance @10 @9 out smd_reverse_md.txt]
+	@10 (1 atoms) to @9 (1 atoms), imaged.
+----- smd_reverse_md_center.netcdf (1-1450, 1) -----
+ 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% Complete.
+
+Read 1450 frames and processed 1450 frames.
+TIME: Avg. throughput= 3555.5599 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+DATASETS (1 total):
+	Dis_00001 "Dis_00001" (double, distance), size is 1450 (11.600 kB)
+    Total data set memory usage is at least 11.600 kB
+
+DATAFILES (1 total):
+  smd_reverse_md.txt (Standard Data File):  Dis_00001
+
+RUN TIMING:
+TIME:		Init               : 0.0000 s (  0.00%)
+TIME:		Trajectory Process : 0.4078 s ( 99.14%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0034 s (  0.83%)
+TIME:		Other              : 0.0001 s (  0.00%)
+TIME:	Run Total 0.4114 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 0.7555 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

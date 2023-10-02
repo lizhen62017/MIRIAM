@@ -1,0 +1,3 @@
+trajin smd_reverse_md.netcdf
+autoimage
+trajout smd_reverse_md_center.netcdf netcdf
