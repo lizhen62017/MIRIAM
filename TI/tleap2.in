@@ -1,7 +1,7 @@
-source leaprc.protein.ff14SB
+source leaprc.protein.ff19SB
 loadoff solvents.lib
 loadoff atomic_ions.lib
-loadamberparams ff14sb_CC.frcmod
+loadamberparams ff19sb_CC.frcmod
 loadamberparams frcmod.opc
 loadamberparams frcmod.NI
 loadamberparams frcmod.CO
